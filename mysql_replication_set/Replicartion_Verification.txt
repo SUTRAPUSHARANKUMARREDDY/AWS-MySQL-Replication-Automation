@@ -1,0 +1,25 @@
+mysql -u root -pgaian -h <Primary Instance private IP>
+CREATE DATABASE test_replication;
+USE test_replication;
+CREATE TABLE test_table (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255) NOT NULL);
+INSERT INTO test_table (name) VALUES ('Sample Data 1'), ('Sample Data 2');
+
+
+mysql -u root -pgaian -h <Secondary Instance private IP>
+
+SHOW DATABASES;
+USE test_replication;
+SELECT * FROM test_table;
+
+
+SHOW SLAVE STATUS\G;
+
+
+mysql -u root -pgaian -h <Secondary Instance private IP>
+
+SHOW DATABASES;
+USE test_replication;
+SELECT * FROM test_table;
+
+
+SHOW SLAVE STATUS\G;

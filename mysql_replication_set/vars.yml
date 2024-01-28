@@ -1,0 +1,4 @@
+mysql_root_password: "gaian"
+repl_password: "gaian"
+master_host: "{{ groups['mysql_servers'][0] }}"
+master_host_private_ip: "{{ hostvars[groups['mysql_servers'][0]].ansible_host_private }}"
